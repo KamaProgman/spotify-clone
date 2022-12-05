@@ -1,22 +1,15 @@
-import { useState } from 'react';
 
 import { CgClose } from "react-icons/cg";
 import { RiUserAddLine } from "react-icons/ri";
 
-const Drawer = () => {
-   const [isShown, setIsShown] = useState(false);
-
-   const onShowDrawer = () => {
-      setIsShown(!isShown)
-   }
-
+const Drawer = ({isShown}) => {
    return (
       <div className='max-w-[345px] h-full bg-black fixed right-0 top-0 px-5 py-7'>
          <div className='flex items-center justify-between'>
             <h3 className='text-xl text-[#cccccc] font-bold'>Friend Activity</h3>
             <div className='flex items-center justify-between gap-4'>
                <button><RiUserAddLine size='26px' color='#cccccc' /></button>
-               <button onClick={() => onShowDrawer()}>
+               <button onClick={isShown}>
                   <CgClose size='35px' color='#cccccc' />
                </button>
             </div>
