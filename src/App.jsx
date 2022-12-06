@@ -17,7 +17,8 @@ const App = () => {
 				<div className="flex-1 h-fit px-10">
 					<Header />
 					<main>
-						<HomePage />
+						{/* <HomePage /> */}
+						<PlaylistPage />
 					</main>
 				</div>
 				<div className='max-w-[345px] w-full h-[100vh] bg-red-700 px-5 py-7'>aasdasdsd</div>
