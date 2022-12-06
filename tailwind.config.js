@@ -17,10 +17,8 @@ module.exports = {
 			lg: ['18px', { lineHeight: '22px' }],
 			xl: ['20px', { lineHeight: '25px' }],
 			'2xl': ['30px', { lineHeight: '38px' }],
-			'3xl': ['40px', { lineHeight: '48px' }]
+			'3xl': ['40px', { lineHeight: '48px' }],
+			'largest': ['122px', { lineHeight: '154px' }]
 		}
-	},
-	plugins: [
-		require('flowbite/plugin')
-	]
+	}
 }
