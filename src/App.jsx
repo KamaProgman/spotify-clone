@@ -1,13 +1,18 @@
 import { useState } from 'react';
+import { Routes, Route } from 'react-router-dom'
 
 import Aside from "./components/Aside";
 import Header from "./components/Header";
 import Drawer from "./components/Drawer";
 import HomePage from "./pages/HomePage";
 import PlaylistPage from './pages/PlaylistPage';
+import SearchPage from './pages/SearchPage';
+import LibraryPage from './pages/LibraryPage'
+import CreatePlaylistPage from './pages/CreatePlaylistPage'
+import LikedSongsPage from './pages/LikedSongsPage'
 
 const App = () => {
-	const [drawerIsShown, setDrawerIsShown] = useState(true);
+	const [drawerIsShown, setDrawerIsShown] = useState(false);
 
 	return (
 		<div>
@@ -17,11 +22,17 @@ const App = () => {
 				<div className="flex-1 h-fit px-10">
 					<Header />
 					<main>
-						{/* <HomePage /> */}
-						<PlaylistPage />
+						<Routes>
+							<Route path='/' element={<HomePage />} />
+							<Route path='playlist' element={<PlaylistPage />} />
+							<Route path='search' element={<SearchPage />} />
+							<Route path='library' element={<LibraryPage />} />
+							<Route path='create-playlist' element={<CreatePlaylistPage />} />
+							<Route path='liked-songs' element={<LikedSongsPage />} />
+							<Route path='liked-songs' element={<LikedSongsPage />} />
+						</Routes>
 					</main>
 				</div>
-				<div className='max-w-[345px] w-full h-[100vh] bg-red-700 px-5 py-7'>aasdasdsd</div>
 				{drawerIsShown ? <Drawer isShown={() => setDrawerIsShown(!drawerIsShown)} /> : null}
 			</div>
 		</div>
