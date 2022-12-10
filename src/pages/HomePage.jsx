@@ -1,7 +1,11 @@
+import { useState } from 'react';
 import PlaylistRec from '../components/children/PlaylistRec';
 import PlaylistList from '../components/PlaylistList';
 
 const HomePage = () => {
+   const [data, setData] = useState([])
+   const [token, setToken] = useState('')
+
    return (
       <section className="">
          <div className="mt-[30px]">
