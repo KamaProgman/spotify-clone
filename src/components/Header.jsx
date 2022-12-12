@@ -5,7 +5,7 @@ import ava from '../resources/ava.svg'
 
 const Header = () => {
    return (
-      <header className=" text-white py-5 flex items-center justify-between">
+      <header className="text-white py-5 flex items-center justify-between">
          <div className="flex items-center">
             <button className="p-[4px] bg-[#00000090] rounded-full mr-5">
                <IoIosArrowBack size='32' />

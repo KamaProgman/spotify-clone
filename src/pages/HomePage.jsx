@@ -1,6 +1,4 @@
 import { useState, useEffect, useContext } from 'react';
-import { useLocation } from 'react-router-dom';
-import spotify from '../contexts/spotifyContext';
 
 import Login from '../components/Login';
 import PlaylistRec from '../components/children/PlaylistRec';
@@ -24,10 +22,8 @@ const HomePage = () => {
          window.location.href = "";
          window.localStorage.setItem("token", token);
       }
-
       setToken(token)
-
-   }, []);
+   }, [token]);
 
    // useEffect(() => {
    //    setToken(window.localStorage.getItem('token'))

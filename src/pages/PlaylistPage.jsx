@@ -4,10 +4,10 @@ import SongsList from "../components/SongsList";
 
 const PlaylistPage = () => {
    return (
-      <div>
+      <section>
          <PlaylistOverview />
          <SongsList />
-      </div>
+      </section>
    );
 }
 
