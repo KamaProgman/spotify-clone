@@ -1,5 +1,4 @@
 import { useState, useEffect, useContext } from 'react';
-import axios from "axios"
 
 import Login from '../components/Login';
 import PlaylistRec from '../components/children/PlaylistRec';
@@ -49,15 +48,15 @@ const HomePage = () => {
          <Login />
       )
    }
+
    return (
-      <section>
-         <div className="mt-[30px]">
+      <section className="section1">
+         <div>
             <h1 className="font-bold text-[39px] text-white mb-[30px]">Good afternoon</h1>
             <div className="grid grid-cols-2 md:grid-cols-2 gap-4">
                <ItemComponent />
             </div>
          </div>
-
          <PlaylistList />
       </section>
    );

@@ -16,3 +16,24 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+
+main {
+  @apply flex pl-[325px];
+
+	.bg-spotify {
+		@apply h-[510px] w-full absolute z-[-1] left-0 top-0 bg-gradient-to-b from-[#3333A3] to-[#121212];
+	}
+
+	.section1 {
+		@apply mt-[30px] flex-1 pr-[40px];
+	}
+}
+
+header {
+	@apply pl-[325px] pr-[40px] py-5 text-white flex items-center justify-between;
+
+	&.isShown {
+		@apply pr-[385px]
+	}
+}

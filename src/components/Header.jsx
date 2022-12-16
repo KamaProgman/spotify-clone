@@ -3,9 +3,9 @@ import { MdArrowDropDown } from "react-icons/md";
 
 import ava from '../resources/ava.svg'
 
-const Header = () => {
+const Header = ({ isShown }) => {
    return (
-      <header className="text-white py-5 flex items-center justify-between">
+      <header className={` ${isShown ? 'isShown' : null}`}>
          <div className="flex items-center">
             <button className="p-[4px] bg-[#00000090] rounded-full mr-5">
                <IoIosArrowBack size='32' />
