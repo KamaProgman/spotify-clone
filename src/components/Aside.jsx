@@ -9,7 +9,7 @@ import { FaHeart } from 'react-icons/fa'
 
 const Aside = () => {
    return (
-      <aside className="max-w-[310px] h-full fixed top-0 left-0 bg-black px-[30px] pt-[70px] flex-1 pb-4">
+      <aside>
          <div className="border-b-[1px] bottom-solid border-[#282828] pb-5">
             <nav>
                <ul className="flex flex-col gap-6 text-[#aaaaaa]">
@@ -86,7 +86,7 @@ const Aside = () => {
                <p className='text-[#B3B3B3] text-lg truncate '>Happy Hits!</p>
             </Link>
             <Link to='playlist'>
-               <p className='text-[#B3B3B3] text-lg truncate '>Anime Lofi & Chillhop Music</p>
+               <p className='text-[#B3B3B3] text-lg truncate '>Chillhop Music</p>
             </Link>
          </div>
       </aside>

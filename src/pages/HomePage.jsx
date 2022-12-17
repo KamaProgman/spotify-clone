@@ -1,4 +1,4 @@
-import { useState, useEffect, useContext } from 'react';
+import { useState, useEffect } from 'react';
 
 import Login from '../components/Login';
 import PlaylistRec from '../components/children/PlaylistRec';
@@ -29,7 +29,7 @@ const HomePage = () => {
       setToken(window.localStorage.getItem('token'))
 
       if (token) {
-         fetch('https://api.spotify.com/v1/users/31zeakm22w27huvepwvpspwcux2a/playlists?offset=0&limit=4', {
+         fetch('https://api.spotify.com/v1/me/playlists?limit=10&offset=0', {
             headers: {
                Authorization: `Bearer ${token}`
             }
@@ -53,7 +53,7 @@ const HomePage = () => {
       <section className="section1">
          <div>
             <h1 className="font-bold text-[39px] text-white mb-[30px]">Good afternoon</h1>
-            <div className="grid grid-cols-2 md:grid-cols-2 gap-4">
+            <div className="grid grid-cols-3 max-xl:grid-cols-2 gap-4">
                <ItemComponent />
             </div>
          </div>

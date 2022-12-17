@@ -1,6 +1,5 @@
 import PlaylistCard from './children/PlaylistCard';
 
-
 const PlaylistList = () => {
    return (
       <div className="mt-[50px] w-full">

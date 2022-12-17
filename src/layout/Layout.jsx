@@ -12,7 +12,7 @@ const Layout = ({ children }) => {
          <Header isShown={drawerIsShown} />
          <main>
             <Aside />
-            <div className="bg__spotify"></div>
+            <div className="bg-spotify"></div>
             {children}
             {drawerIsShown ? <Drawer isShown={() => setDrawerIsShown(!drawerIsShown)} /> : null}
          </main>
