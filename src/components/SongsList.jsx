@@ -6,7 +6,7 @@ import { FaPlay } from "react-icons/fa"
 import { FiHeart, FiSearch } from "react-icons/fi"
 import { HiArrowRight } from "react-icons/hi"
 
-const SongsList = () => {
+const SongsList = ({ data }) => {
    return (
       <div>
          <div className="mt-8">
@@ -39,7 +39,6 @@ const SongsList = () => {
                </div>
             </div>
          </div>
-
          <table className="w-full mt-11">
             <thead className='block border-b-2 border-[#666666] py-2 mb-7'>
                <tr className="flex gap-5 text-base text-[#B3B3B3]">
@@ -53,8 +52,11 @@ const SongsList = () => {
                </tr>
             </thead>
             <tbody className='space-y-4'>
-               <Song />
-               <Song />
+               {
+                  data.map((item, idx) => {
+                     return <Song key={idx} track={item.track} index={idx + 1} />
+                  })
+               }
             </tbody>
          </table>
       </div>

@@ -13,7 +13,7 @@ const App = () => {
 		<Layout>
 			<Routes>
 				<Route path='/' element={<HomePage />} />
-				<Route path='playlist' element={<PlaylistPage />} />
+				<Route path='playlist/:id' element={<PlaylistPage />} />
 				<Route path='search' element={<SearchPage />} />
 				<Route path='library' element={<LibraryPage />} />
 				<Route path='create-playlist' element={<CreatePlaylistPage />} />

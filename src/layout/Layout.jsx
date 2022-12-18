@@ -5,7 +5,7 @@ import Header from "../components/Header";
 import Drawer from "../components/Drawer";
 
 const Layout = ({ children }) => {
-   const [drawerIsShown, setDrawerIsShown] = useState(true);
+   const [drawerIsShown, setDrawerIsShown] = useState(false);
 
    return (
       <>

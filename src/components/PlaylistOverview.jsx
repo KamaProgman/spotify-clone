@@ -1,12 +1,12 @@
 import photo from '../resources/playlist-photo.jpg'
 
-const PlaylistOverview = () => {
+const PlaylistOverview = ({ name }) => {
    return (
       <div className='flex items-end mt-7'>
          <img className='max-w-[300px] mr-8' src={photo} alt="Playlist" />
          <div className='text-white'>
-            <p className='text-xl font-medium'>PUBLIC PLAYLIST</p>
-            <h1 className='text-largest font-bold'>Chill Mix</h1>
+            <p className='text-lg font-medium'>PLAYLIST</p>
+            <h1 className='text-largest font-bold mb-8'>{name}</h1>
             <p className='text-xl text-[#a4a4a4] mb-3'>
                <span className='text-white'>Julia Wolf, ayokay, Khalid </span>
                and more

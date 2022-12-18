@@ -30,18 +30,6 @@ code {
     monospace;
 }
 
-main {
-  @apply flex pl-[335px];
-
-	.bg-spotify {
-		@apply h-[510px] w-full absolute z-[-1] left-0 top-0 bg-gradient-to-b from-[#3333A3] to-[#121212];
-	}
-
-	.section1 {
-		@apply mt-[30px] flex-1 pr-[40px];
-	}
-}
-
 header {
 	@apply pl-[335px] pr-[40px] py-5 text-white flex items-center justify-between;
 
@@ -50,10 +38,27 @@ header {
 	}
 }
 
-aside {
-  @apply max-w-[300px] w-full h-full fixed top-0 left-0 bg-black px-[30px] pt-[70px] flex-1 pb-4;
+main {
+  @apply flex pl-[335px];
+
+	.bg-spotify {
+		@apply h-[510px] w-full absolute z-[-1] left-0 top-0 bg-gradient-to-b from-[#3333A3] to-[#121212];
+	}
+
+  section {
+    @apply flex-1 pr-[40px];
+  }
+
+  .drawer {
+    @apply max-w-[345px] w-full h-[100vh]; 
+  }
+
+
+  .playlist {
+    @apply flex rounded-md overflow-hidden bg-[#ffffff20] w-full;
+  }
 }
 
-.drawer {
-  @apply max-w-[345px] w-full h-[100vh]; 
+aside {
+  @apply max-w-[300px] w-full h-full fixed top-0 left-0 bg-black px-[30px] pt-[70px] flex-1 pb-4;
 }

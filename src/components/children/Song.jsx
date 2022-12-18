@@ -1,20 +1,24 @@
-
 import { AiOutlineHeart, AiFillHeart } from 'react-icons/ai';
-import img from '../../resources/song.svg'
 
-const Song = () => {
+const Song = ({ track, index }) => {
+   const { name, artists, album, duration_ms } = track
+
+   const duration = ((duration_ms / 1000) / 60).toString().split('.')
+
    return (
       <tr className="flex gap-5 text-white">
          <td className="max-h-[52px] flex-1 flex items-center">
-            <p className='text-xl text-[#B3B3B3] font-medium'>1</p>
-            <img src={img} alt="song" className='h-[100%] ml-6 mr-5' />
+            <p className='text-xl text-[#B3B3B3] font-medium w-7'>{index}</p>
+            <img src={album.images[0].url} alt="song" className='h-[100%] ml-1 mr-5' />
             <div>
-               <p className='text-xl'>Wrong Kind Of People</p>
-               <span className='text-lg text-[#B3B3B3]'>Baker Grace</span>
+               <p className='text-xl'>{name}</p>
+               <span className='text-lg text-[#B3B3B3]'>
+                  {artists[0].name}
+               </span>
             </div>
          </td>
          <td className="flex-1 text-lg text-[#B3B3B3] flex items-center">
-            <p>Play It Safe</p>
+            <p>{album.name}</p>
          </td>
          <td className="flex-1"></td>
          <td className="flex-0 text-lg flex items-center gap-7">

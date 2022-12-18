@@ -18,7 +18,7 @@ module.exports = {
 			xl: ['20px', { lineHeight: '25px' }],
 			'2xl': ['30px', { lineHeight: '38px' }],
 			'3xl': ['40px', { lineHeight: '48px' }],
-			'largest': ['122px', { lineHeight: '154px' }]
+			'largest': ['112px', { lineHeight: '130px' }]
 		}
 	}
 }
