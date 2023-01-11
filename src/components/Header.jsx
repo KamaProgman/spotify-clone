@@ -30,4 +30,5 @@ const Header = ({ isShown }) => {
       </header>
    );
 }
+
 export default Header;

@@ -39,7 +39,7 @@ header {
 }
 
 main {
-  @apply flex pl-[335px];
+  @apply flex pl-[335px] pb-8;
 
 	.bg-spotify {
 		@apply h-[510px] w-full absolute z-[-1] left-0 top-0 bg-gradient-to-b from-[#3333A3] to-[#121212];

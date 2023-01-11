@@ -2,8 +2,7 @@ import { AiOutlineHeart, AiFillHeart } from 'react-icons/ai';
 
 const Song = ({ track, index }) => {
    const { name, artists, album, duration_ms } = track
-
-   const duration = ((duration_ms / 1000) / 60).toString().split('.')
+   const duration = ((duration_ms / 1000) / 60).toFixed(2).split('.')
 
    return (
       <tr className="flex gap-5 text-white">
@@ -25,7 +24,7 @@ const Song = ({ track, index }) => {
             <button>
                <AiOutlineHeart color='#b3b3b3' size='24px' />
             </button>
-            <p>2 : 12</p>
+            <p>{`${duration[0]} : ${duration[1]}`}</p>
          </td>
       </tr>
    );

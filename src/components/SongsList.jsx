@@ -1,3 +1,5 @@
+import PropTypes from 'prop-types';
+
 import Song from './children/Song';
 
 import { BiTime, BiDotsHorizontalRounded } from 'react-icons/bi';
@@ -6,7 +8,7 @@ import { FaPlay } from "react-icons/fa"
 import { FiHeart, FiSearch } from "react-icons/fi"
 import { HiArrowRight } from "react-icons/hi"
 
-const SongsList = ({ data }) => {
+const SongsList = ({ tracks }) => {
    return (
       <div>
          <div className="mt-8">
@@ -53,7 +55,7 @@ const SongsList = ({ data }) => {
             </thead>
             <tbody className='space-y-4'>
                {
-                  data.map((item, idx) => {
+                  tracks.map((item, idx) => {
                      return <Song key={idx} track={item.track} index={idx + 1} />
                   })
                }
@@ -61,6 +63,10 @@ const SongsList = ({ data }) => {
          </table>
       </div>
    );
+}
+
+SongsList.propTypes = {
+   tracks: PropTypes.array
 }
 
 export default SongsList;

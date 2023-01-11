@@ -12,31 +12,13 @@ const HomePage = () => {
 
    const navigate = useNavigate()
 
-   // Setting token to localStorage
-   useEffect(() => {
-      const hash = window.location.hash
-      let token = window.localStorage.getItem("token");
-
-      if (!token && hash) {
-         token = hash
-            .substring(1)
-            .split("&")
-            .find((elem) => elem.startsWith("access_token"))
-            .split("=")[1];
-
-         window.location.href = "";
-         window.localStorage.setItem("token", token);
-      }
-      setToken(token)
-   }, [token]);
-
    // Getting playlists from server
    useEffect(() => {
       setToken(window.localStorage.getItem('token'))
 
       if (token) {
          axios
-            .get('https://api.spotify.com/v1/me/playlists?limit=10&offset=0', {
+            .get('https://api.spotify.com/v1/me/playlists?limit=6&offset=0', {
                headers: {
                   Authorization: `Bearer ${token}`
                }
@@ -66,12 +48,6 @@ const HomePage = () => {
          <div className="grid grid-cols-3 max-xl:grid-cols-2 gap-4">
             {items}
          </div>
-      )
-   }
-
-   if (!token) {
-      return (
-         <Login />
       )
    }
 

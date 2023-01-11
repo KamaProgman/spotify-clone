@@ -1,5 +1,4 @@
 import axios from "axios";
-
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 
@@ -28,8 +27,8 @@ const PlaylistPage = () => {
 
    return (
       <section className="flex-1">
-         <PlaylistOverview name={state.name} />
-         <SongsList data={tracks} />
+         <PlaylistOverview name={state.name} tracks={tracks} />
+         <SongsList tracks={tracks} />
       </section>
    );
 }

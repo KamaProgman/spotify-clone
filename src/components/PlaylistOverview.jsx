@@ -1,6 +1,7 @@
 import photo from '../resources/playlist-photo.jpg'
+import PropTypes from 'prop-types'
 
-const PlaylistOverview = ({ name }) => {
+const PlaylistOverview = ({ name, tracks }) => {
    return (
       <div className='flex items-end mt-7'>
          <img className='max-w-[300px] mr-8' src={photo} alt="Playlist" />
@@ -17,11 +18,15 @@ const PlaylistOverview = ({ name }) => {
                </p>
                •
                <span className='3
-               text-[#a4a4a4]'>34 songs, 2hr 01 min</span>
+               text-[#a4a4a4]'>{`${tracks.length} songs, 2hr 01 min`}</span>
             </div>
          </div>
       </div>
    );
+}
+
+PlaylistOverview.propTypes = {
+   tracks: PropTypes.array
 }
 
 export default PlaylistOverview;
