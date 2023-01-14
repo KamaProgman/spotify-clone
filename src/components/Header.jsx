@@ -8,6 +8,11 @@ import ava from '../resources/ava.svg'
 const Header = ({ isShown }) => {
    const navigate = useNavigate()
 
+   // Temporary function
+   const onGetOut = () => {
+      localStorage.clear()
+   }
+   
    return (
       <header className={` ${isShown ? 'isShown' : null}`}>
          <div className="flex items-center">
@@ -24,7 +29,7 @@ const Header = ({ isShown }) => {
          </div>
          <div className="max-w-[190px] flex items-center bg-[#00000080] rounded-3xl p-1 cursor-pointer">
             <img src={ava} alt="ava" />
-            <span className="mx-3 font-semibold">davedirect</span>
+            <span className="mx-3 font-semibold" onClick={onGetOut}>davedirect</span>
             <MdArrowDropDown size='30px' />
          </div>
       </header>

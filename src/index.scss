@@ -42,7 +42,7 @@ main {
   @apply flex pl-[335px] pb-8;
 
 	.bg-spotify {
-		@apply h-[510px] w-full absolute z-[-1] left-0 top-0 bg-gradient-to-b from-[#3333A3] to-[#121212];
+		@apply h-[340px] w-full absolute z-[-1] left-0 top-0 bg-gradient-to-b from-[#1f1f3399] to-[#121212];
 	}
 
   section {
@@ -53,9 +53,28 @@ main {
     @apply max-w-[345px] w-full h-[100vh]; 
   }
 
-
   .playlist {
-    @apply flex rounded-md overflow-hidden bg-[#ffffff20] w-full;
+    @apply bg-[#ffffff10] w-full h-[82px] pr-5 flex items-center
+            rounded-md overflow-hidden ease-in-out duration-200 hover:bg-[#ffffff30] cursor-pointer;  
+
+    &:hover {
+      .playBtn {
+        @apply flex
+      }
+    }
+
+    .playBtn {
+      @apply w-[52px] h-[52px] bg-[#1ab05b] flex justify-center items-center
+             cursor-default rounded-full hidden ease-in-out duration-300 drop-shadow-md;
+
+      &:hover {
+        @apply w-[54px] h-[54px]
+      }
+    }
+    
+    &.pulse {
+      @apply animate-pulse cursor-default;
+    }
   }
 }
 
