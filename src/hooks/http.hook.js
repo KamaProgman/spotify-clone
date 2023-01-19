@@ -5,7 +5,7 @@ const useHttp = () => {
    const [loading, setLoading] = useState(false);
    const [error, setError] = useState(null);
 
-   const request = useCallback(async (url, headers, method = 'GET') => {
+   const request = useCallback(async (url, headers, method = 'GET', body = null) => {
       setLoading(true);
       try {
          const response = await axios(url, headers, method);
