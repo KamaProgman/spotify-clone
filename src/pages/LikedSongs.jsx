@@ -1,6 +1,6 @@
 
 
-const LikedSongPage = () => {
+const LikedSong = () => {
    return (
       <div>
          Liked songs
@@ -8,4 +8,4 @@ const LikedSongPage = () => {
    );
 }
 
-export default LikedSongPage;
+export default LikedSong;

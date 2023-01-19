@@ -1,6 +1,6 @@
 
 
-const LibraryPage = () => {
+const Library = () => {
    return (
       <div>
          Library
@@ -8,4 +8,4 @@ const LibraryPage = () => {
    );
 }
 
-export default LibraryPage;
+export default Library;

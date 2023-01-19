@@ -1,6 +1,6 @@
 
 
-const CreatePlaylistPage = () => {
+const CreatePlaylist = () => {
    return (
       <div>
          Create Playlist
@@ -8,4 +8,4 @@ const CreatePlaylistPage = () => {
    );
 }
 
-export default CreatePlaylistPage;
+export default CreatePlaylist;

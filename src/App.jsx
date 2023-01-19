@@ -1,23 +1,23 @@
 import { Routes, Route } from 'react-router-dom'
 
 import Layout from './layout/Layout';
-import HomePage from "./pages/HomePage";
-import PlaylistPage from './pages/PlaylistPage';
-import SearchPage from './pages/SearchPage';
-import LibraryPage from './pages/LibraryPage'
-import CreatePlaylistPage from './pages/CreatePlaylistPage'
-import LikedSongsPage from './pages/LikedSongsPage'
+import Home from "./pages/Home";
+import Playlist from './pages/Playlist';
+import Search from './pages/Search';
+import Library from './pages/Library'
+import CreatePlaylist from './pages/CreatePlaylist'
+import LikedSongs from './pages/LikedSongs'
 
 const App = () => {
 	return (
 		<Layout>
 			<Routes>
-				<Route path='/' element={<HomePage />} />
-				<Route path='playlist/:id' element={<PlaylistPage />} />
-				<Route path='search' element={<SearchPage />} />
-				<Route path='library' element={<LibraryPage />} />
-				<Route path='create-playlist' element={<CreatePlaylistPage />} />
-				<Route path='liked-songs' element={<LikedSongsPage />} />
+				<Route path='/' element={<Home />} />
+				<Route path='playlist/:id' element={<Playlist />} />
+				<Route path='search' element={<Search />} />
+				<Route path='library' element={<Library />} />
+				<Route path='create-playlist' element={<CreatePlaylist />} />
+				<Route path='liked-songs' element={<LikedSongs />} />
 			</Routes>
 		</Layout>
 	);

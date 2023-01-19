@@ -3,7 +3,7 @@ import { useLocation } from "react-router-dom";
 import PlaylistOverview from "../components/PlaylistOverview";
 import SongsList from "../components/SongsList";
 
-const PlaylistPage = () => {
+const Playlist = () => {
    const { state } = useLocation()
    const url = state.tracks.href
 
@@ -15,4 +15,4 @@ const PlaylistPage = () => {
    );
 }
 
-export default PlaylistPage;
+export default Playlist;

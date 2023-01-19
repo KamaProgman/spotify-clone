@@ -18,6 +18,13 @@ const useService = () => {
       }
    }
 
+   const getPlaylists = async (timestamp) => {
+      if (token) {
+         const res = await request(`${_apiBase}browse/featured-playlists?country=UZ&locale=uz&timestamp=${timestamp}&limit=20&offset=5`, { headers: { Authorization: `Bearer ${token}` } })
+         return res.playlists
+      }
+   }
+
    const getTracks = async (url) => {
       if (token) {
          const res = await request(url, { headers: { Authorization: `Bearer ${token}` } })
@@ -25,7 +32,7 @@ const useService = () => {
       }
    }
 
-   return { token, loading, error, getMyPlaylists, getTracks }
+   return { token, loading, error, getPlaylists, getMyPlaylists, getTracks }
 }
 
 export default useService
