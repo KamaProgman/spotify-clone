@@ -9,7 +9,7 @@ const MyPLaylist = ({item}) => {
    }
 
    return (
-      <div className="playlist" onClick={() => goToPlaylist(item)}>
+      <div className="my-playlist" onClick={() => goToPlaylist(item)}>
          <img src={item.images[0]?.url} alt={item.name} className='max-w-[82px] h-full drop-shadow-md' />
          <div className="ml-[21px] flex items-center flex-auto">
             <p className="font-bold text-xl text-white">{item.name}</p>

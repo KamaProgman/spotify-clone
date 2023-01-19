@@ -1,10 +1,15 @@
-
+import { Helmet } from "react-helmet";
 
 const Library = () => {
    return (
-      <div>
-         Library
-      </div>
+      <>
+         <Helmet>
+            <title>Spotify - Library</title>
+         </Helmet>
+         <div>
+            Library
+         </div>
+      </>
    );
 }
 

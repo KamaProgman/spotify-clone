@@ -1,6 +1,7 @@
 import PlaylistCard from './children/PlaylistCard';
 
 const PlaylistList = ({ title, playlists }) => {
+
    return (
       <div className="mt-[50px] w-full">
          <div className="flex items-center justify-between">

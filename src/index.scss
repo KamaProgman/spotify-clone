@@ -53,9 +53,9 @@ main {
     @apply max-w-[345px] w-full h-[100vh]; 
   }
 
-  .playlist {
+  .my-playlist {
     @apply bg-[#ffffff10] w-full h-[82px] pr-5 flex items-center
-            rounded-md overflow-hidden ease-in-out duration-200 hover:bg-[#ffffff30] cursor-pointer;  
+            rounded-md overflow-hidden ease-in-out duration-200 hover:bg-[#ffffff25] cursor-pointer;  
 
     &:hover {
       .playBtn {
