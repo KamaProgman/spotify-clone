@@ -3,9 +3,10 @@ import { IoPlaySharp } from "react-icons/io5"
 
 const MyPLaylist = ({item}) => {
    const navigate = useNavigate()
+   const img = item?.images[0]?.url
 
    const goToPlaylist = (item) => {
-      navigate(`playlist/${item.id}`, { state: item })
+      navigate(`playlist/${item.id}`, {state: {track: item?.tracks?.href, playlist: item, name: item.name, img}})
    }
 
    return (

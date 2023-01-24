@@ -1,26 +1,11 @@
-import { useEffect, useState } from "react";
-import useService from "../hooks/service.hook";
-
 import Song from './children/Song';
-
 import { BiTime } from 'react-icons/bi';
 import { TbDots } from 'react-icons/tb';
 import { IoPlaySharp } from "react-icons/io5"
 import { FiHeart, FiSearch } from "react-icons/fi"
 import { HiArrowRight } from "react-icons/hi"
 
-const SongsList = ({ url }) => {
-   const [tracks, setTracks] = useState([])
-   const { token, loading, error, getTracks } = useService()
-
-   useEffect(() => {
-      getTracks(url).then(onDataLoaded)
-   }, [token]);
-
-   const onDataLoaded = (newData) => {
-      setTracks(newData?.items)
-   }
-
+const SongsList = ({ tracks }) => {
    return (
       <div>
          <div className="mt-8">
@@ -68,7 +53,7 @@ const SongsList = ({ url }) => {
             <tbody>
                {
                   tracks?.map((item, idx) => {
-                     return <Song key={idx} track={item.track} index={idx + 1} />
+                     return <Song key={idx} index={idx + 1} track={item.track ? item.track : item} />
                   })
                }
             </tbody>

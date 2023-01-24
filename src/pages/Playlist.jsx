@@ -1,12 +1,38 @@
+import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import { Helmet } from "react-helmet";
+import useService from "../hooks/service.hook";
 
 import PlaylistOverview from "../components/PlaylistOverview";
 import SongsList from "../components/SongsList";
 
 const Playlist = () => {
+   const [tracks, setTracks] = useState([]);
+   const [album, setAlbum] = useState(null);
    const { state } = useLocation()
-   const url = state.tracks.href
+   const { token, error, loading, getTracks } = useService()
+
+   useEffect(() => {
+      if (state.track) {
+         getTracks(state.track).then(res => {
+            setTracks(res?.items)
+            setAlbum(res)
+         })
+      } else {
+         getTracks(state.playlist.href + '/tracks').then(res => {
+            setTracks(res?.items)
+            setAlbum(res)
+         })
+      }
+   }, [token]);
+
+   const getArtistsNames = () => {
+      let names = tracks?.map(item => item?.track?.artists[0]?.name)
+      names = [...new Set(names)]
+      let stringifyed = names?.slice(0, 4) + '...'
+
+      return stringifyed
+   }
 
    return (
       <>
@@ -14,8 +40,8 @@ const Playlist = () => {
             <title>Spotify - Playlist</title>
          </Helmet>
          <section className="flex-1">
-            <PlaylistOverview playlist={state} />
-            <SongsList url={url} />
+            <PlaylistOverview album={album} name={state.name} img={state.img} artists={getArtistsNames} />
+            <SongsList tracks={tracks} />
          </section>
       </>
    );

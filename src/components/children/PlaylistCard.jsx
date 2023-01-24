@@ -2,10 +2,11 @@ import { useNavigate } from 'react-router-dom';
 
 const PlaylistCard = ({ item }) => {
    const { name, images, description } = item
+   const img = item?.images[0]?.url
    const navigate = useNavigate()
 
    const goToPlaylist = (item) => {
-      navigate(`playlist/${item.id}`, { state: item })
+      navigate(`playlist/${item.id}`, {state: {track: item?.tracks?.href, playlist: item, name: item.name, img}})
    }
 
    return (
