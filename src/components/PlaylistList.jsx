@@ -1,7 +1,6 @@
 import PlaylistCard from './children/PlaylistCard';
 
-const PlaylistList = ({ title, playlists }) => {
-
+const PlaylistList = ({ title, playlists, errorMsg = '' }) => {
    return (
       <div className="mt-[50px] w-full">
          <div className="flex items-center justify-between">
@@ -10,7 +9,8 @@ const PlaylistList = ({ title, playlists }) => {
          </div>
          <div className="mt-5 grid grid-cols-5 gap-6 max-w-[1400px]">
             {
-               playlists?.map(item => < PlaylistCard key={item.id} item={item} />)
+               errorMsg.length > 0 ? <span className="text-[red] text-[24px]" >{errorMsg}</span> :
+                  playlists?.map(item => < PlaylistCard key={item.id} item={item} />)
             }
          </div>
       </div>

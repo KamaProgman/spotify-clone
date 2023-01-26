@@ -72,9 +72,9 @@ main {
       }
     }
     
-    &.pulse {
-      @apply animate-pulse cursor-default;
-    }
+  }
+  .pulse {
+    @apply animate-pulse cursor-default;
   }
 }
 

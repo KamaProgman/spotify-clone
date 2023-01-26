@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { IoPlaySharp } from "react-icons/io5"
 
-const MyPLaylist = ({item}) => {
+const MyPlaylist = ({item}) => {
    const navigate = useNavigate()
    const img = item?.images[0]?.url
 
@@ -23,4 +23,4 @@ const MyPLaylist = ({item}) => {
    );
 }
 
-export default MyPLaylist;
+export default MyPlaylist;

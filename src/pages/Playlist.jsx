@@ -3,6 +3,7 @@ import { useLocation } from "react-router-dom";
 import { Helmet } from "react-helmet";
 import useService from "../hooks/service.hook";
 
+import Loader from '../components/children/Loader'
 import PlaylistOverview from "../components/PlaylistOverview";
 import SongsList from "../components/SongsList";
 
@@ -32,6 +33,13 @@ const Playlist = () => {
       let stringifyed = names?.slice(0, 4) + '...'
 
       return stringifyed
+   }
+
+   if (loading) {
+      return <Loader />
+   }
+   if (error) {
+      return <p className='text-red-600 text-3xl'>ERROR.</p>
    }
 
    return (

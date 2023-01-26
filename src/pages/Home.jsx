@@ -3,8 +3,9 @@ import useService from '../hooks/service.hook';
 import { Helmet } from "react-helmet";
 
 import PlaylistList from '../components/PlaylistList';
-import PlaylistSkeleton from '../components/Skeleton';
-import MyPLaylist from '../components/children/MyPlaylist';
+import MyPlaylist from '../components/children/MyPlaylist';
+import MyPlaylistSkeleton from '../components/children/Skeleton';
+import PlaylistCardSkeleton from '../components/children/CardSkeleton';
 
 const Home = () => {
    const [myPlaylists, setMyPlaylists] = useState([]);
@@ -12,7 +13,6 @@ const Home = () => {
    const [releases, setReleases] = useState([]);
    const [greeting, setGreeting] = useState('Hello');
    const [errorMsg, setErrorMsg] = useState('');
-
    const { token, loading, error, getPlaylists, getMyPlaylists, getNewReleases } = useService()
 
    // Getting playlists from server
@@ -50,8 +50,12 @@ const Home = () => {
       }
    }, [])
 
-   const skeleton = loading ? <PlaylistSkeleton /> : null;
-   const errorMessage = error ? <p className='text-red-600 text-xl'>ERROR</p> : null;
+   if (error) {
+      return <p className='text-red-600 text-xl'>ERROR</p>
+   }
+
+   const playlistSkeleton = loading ? <MyPlaylistSkeleton /> : null;
+   const cardSkeleton = loading ? <PlaylistCardSkeleton /> : null;
 
    return (
       <>
@@ -64,15 +68,16 @@ const Home = () => {
                <div className="grid grid-cols-3 max-xl:grid-cols-2 gap-4">
                   {
                      myPlaylists?.map((item) => (
-                        <MyPLaylist key={item.id} item={item} />
+                        <MyPlaylist key={item.id} item={item} />
                      ))
                   }
                </div>
-               {skeleton}
-               {errorMessage}
+               {playlistSkeleton}
             </div>
-            <PlaylistList title={'Made for you'} playlists={playlists} />
-            <PlaylistList title={'New releases'} playlists={releases} />
+            <PlaylistList title={'Made for you'} playlists={playlists} errorMsg={errorMsg} />
+            {cardSkeleton}
+            <PlaylistList title={'New releases'} playlists={releases} errorMsg={errorMsg} />
+            {cardSkeleton}
          </section>
       </>
    );
