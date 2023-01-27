@@ -20,7 +20,7 @@ const useService = () => {
 
    const getPlaylists = async (timestamp = '2023-01-19T11%3A35%3A40') => {
       if (token) {
-         const res = await request(`${_apiBase}browse/featured-playlists?country=UZ&locale=uz&timestamp=${timestamp}&limit=5&offset=0`, { headers: { Authorization: `Bearer ${token}` } })
+         const res = await request(`${_apiBase}browse/featured-playlists?country=UZ&locale=uz&timestamp=${timestamp}&limit=5&offset=2`, { headers: { Authorization: `Bearer ${token}` } })
          return res.data
       }
    }

@@ -62,7 +62,7 @@ const Home = () => {
          <Helmet>
             <title>Spotify - Home</title>
          </Helmet>
-         <section className="mt-[30px]">
+         <section>
             <div>
                <h1 className="font-bold text-[39px] text-white mb-[30px]">{greeting}</h1>
                <div className="grid grid-cols-3 max-xl:grid-cols-2 gap-4">

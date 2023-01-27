@@ -5,9 +5,12 @@ import Header from "../components/Header";
 import Drawer from "../components/Drawer";
 import Login from '../components/Login';
 
+import bgContext from '../contexts/bgContext';
+
 const Layout = ({ children }) => {
    const [drawerIsShown, setDrawerIsShown] = useState(false);
    const [token, setToken] = useState('')
+   const [bgColor, setBgColor] = useState();
 
    // Setting token to localStorage
    useEffect(() => {
@@ -27,21 +30,29 @@ const Layout = ({ children }) => {
       setToken(token)
    }, [token]);
 
+   const setContextBg = (data) => {
+      setBgColor(data)
+   }
+
    if (!token) {
       return (
          <Login />
       )
    }
 
+   // console.log(bgColor);
+
    return (
       <>
-         <Header isShown={drawerIsShown} />
-         <main>
-            <Aside />
-            <div className="bg-spotify"></div>
-            {children}
-            {drawerIsShown ? <Drawer isShown={() => setDrawerIsShown(!drawerIsShown)} /> : null}
-         </main>
+         <bgContext.Provider value={{ bgColor, setContextBg }}>
+            <Header isShown={drawerIsShown} />
+            <main>
+               <Aside />
+               <div className="bg-spotify" style={{backgroundColor: bgColor}}></div>
+               {children}
+               {drawerIsShown ? <Drawer isShown={() => setDrawerIsShown(!drawerIsShown)} /> : null}
+            </main>
+         </bgContext.Provider>
       </>
    );
 }

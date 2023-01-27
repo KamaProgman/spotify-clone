@@ -10,6 +10,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: #121212;
+  color: white;
 
   &::-webkit-scrollbar {
     width: 6px;
@@ -22,6 +23,9 @@ body {
     -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.2);
     border-radius: 10px;
     background-color: #111111;
+  }
+  input {
+    outline: none;
   }
 }
 
@@ -39,10 +43,10 @@ header {
 }
 
 main {
-  @apply flex pl-[335px] pb-8;
+  @apply flex pl-[335px] pt-6 pb-8;
 
 	.bg-spotify {
-		@apply h-[340px] w-full absolute z-[-1] left-0 top-0 bg-gradient-to-b from-[#1f1f3399] to-[#121212];
+		@apply h-[440px] w-full absolute z-[-1] left-0 top-0 bg-gradient-to-b from-[#1f1f3399] to-[#121212];
 	}
 
   section {
@@ -55,7 +59,7 @@ main {
 
   .my-playlist {
     @apply bg-[#ffffff10] w-full h-[82px] pr-5 flex items-center
-            rounded-md overflow-hidden ease-in-out duration-200 hover:bg-[#ffffff25] cursor-pointer;  
+            rounded-md overflow-hidden ease-in duration-200 hover:bg-[#d4d4d420] cursor-pointer;  
 
     &:hover {
       .playBtn {
@@ -80,4 +84,9 @@ main {
 
 aside {
   @apply max-w-[300px] w-full h-full fixed top-0 left-0 bg-black px-[30px] pt-[70px] flex-1 pb-4;
+}
+
+/* - Custom classes ----------------------------------------- */
+.custom-shadow {
+  box-shadow: 0 8px 24px rgb(0 0 0 / 50%);
 }

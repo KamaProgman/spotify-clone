@@ -17,7 +17,7 @@ const MyPlaylist = ({item}) => {
          </div>
 
          <button className="playBtn">
-            <IoPlaySharp size="25px" />
+            <IoPlaySharp size="25px" color="black" />
          </button>
       </div>
    );
