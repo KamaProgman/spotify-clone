@@ -1,5 +1,6 @@
-import { useLocation } from "react-router-dom";
-import { useNavigate } from 'react-router-dom'
+import { useLocation, useNavigate } from "react-router-dom";
+import { useContext } from "react";
+import searchContext from "../contexts/searchContext";
 
 import { FiSearch, FiSettings } from "react-icons/fi";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
@@ -9,6 +10,7 @@ import ava from '../resources/ava.svg'
 const Header = ({ isShown }) => {
    const location = useLocation()
    const navigate = useNavigate()
+   const { searchText, changeSearchText } = useContext(searchContext)
 
    // Temporary function
    const onGetOut = () => {
@@ -39,6 +41,7 @@ const Header = ({ isShown }) => {
                         placeholder="What do you want listen to?"
                         id='search'
                         type="text"
+                        onInput={(e) => changeSearchText(e.target.value)}
                      />
                   </div>
                </label>

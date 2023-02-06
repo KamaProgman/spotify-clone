@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { useLocation } from 'react-router-dom';
 
 import Aside from "../components/Aside";
 import Header from "../components/Header";
@@ -6,11 +7,14 @@ import Drawer from "../components/Drawer";
 import Login from '../components/Login';
 
 import bgContext from '../contexts/bgContext';
+import searchContext from '../contexts/searchContext';
 
 const Layout = ({ children }) => {
    const [drawerIsShown, setDrawerIsShown] = useState(false);
    const [token, setToken] = useState('')
    const [bgColor, setBgColor] = useState();
+   const [searchText, setSearchText] = useState('');
+   const location = useLocation()
 
    // Setting token to localStorage
    useEffect(() => {
@@ -34,24 +38,31 @@ const Layout = ({ children }) => {
       setBgColor(data)
    }
 
+   const changeSearchText = (text) => {
+      setSearchText(text)
+   }
+
    if (!token) {
       return (
          <Login />
       )
    }
 
-   // console.log(bgColor);
-
    return (
       <>
          <bgContext.Provider value={{ bgColor, setContextBg }}>
-            <Header isShown={drawerIsShown} />
-            <main>
-               <Aside />
-               <div className="bg-spotify" style={{backgroundColor: bgColor}}></div>
-               {children}
-               {drawerIsShown ? <Drawer isShown={() => setDrawerIsShown(!drawerIsShown)} /> : null}
-            </main>
+            <searchContext.Provider value={{ searchText, changeSearchText }}>
+               <Header isShown={drawerIsShown} />
+               <main>
+                  <Aside />
+                  {location.pathname === '/' ? (
+                     <div className="bg-spotify" style={{ backgroundColor: bgColor }}></div>
+                  ) : null}
+
+                  {children}
+                  {drawerIsShown ? <Drawer isShown={() => setDrawerIsShown(!drawerIsShown)} /> : null}
+               </main>
+            </searchContext.Provider>
          </bgContext.Provider>
       </>
    );

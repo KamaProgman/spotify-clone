@@ -39,7 +39,14 @@ const useService = () => {
       }
    }
 
-   return { token, loading, error, getPlaylists, getNewReleases, getMyPlaylists, getTracks }
+   const getSearch = async (searchText) => {
+      if (token) {
+         const res = await request(`${_apiBase}search?q=${searchText}&type=track&market=UZ&limit=4&offset=0`, { headers: { Authorization: `Bearer ${token}` } })
+         return res.data
+      }
+   }
+
+   return { token, loading, error, getPlaylists, getNewReleases, getMyPlaylists, getTracks, getSearch }
 }
 
 export default useService
