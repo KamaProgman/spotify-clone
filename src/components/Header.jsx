@@ -1,5 +1,5 @@
 import { useLocation, useNavigate } from "react-router-dom";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import searchContext from "../contexts/searchContext";
 
 import { FiSearch, FiSettings } from "react-icons/fi";
@@ -17,6 +17,10 @@ const Header = ({ isShown }) => {
       localStorage.clear()
       window.location = window.location.href;
    }
+
+   useEffect(() => {
+      changeSearchText('')
+   }, [location]);
 
    return (
       <header className={` ${isShown ? 'isShown' : null}`}>

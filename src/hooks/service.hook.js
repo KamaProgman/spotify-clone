@@ -39,9 +39,9 @@ const useService = () => {
       }
    }
 
-   const getSearch = async (searchText) => {
+   const getSearch = async (searchText, limit, type = 'track') => {
       if (token) {
-         const res = await request(`${_apiBase}search?q=${searchText}&type=track&market=UZ&limit=4&offset=0`, { headers: { Authorization: `Bearer ${token}` } })
+         const res = await request(`${_apiBase}search?q=${searchText}&type=${type}&market=UZ&limit=${limit}&offset=0`, { headers: { Authorization: `Bearer ${token}` } })
          return res.data
       }
    }
