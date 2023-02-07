@@ -25,7 +25,7 @@ const Playlist = () => {
             setAlbum(res)
          })
       }
-   }, [token]);
+   }, [token, state]);
 
    const getArtistsNames = () => {
       let names = tracks?.map(item => item?.track?.artists[0]?.name)
