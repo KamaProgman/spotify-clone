@@ -86,6 +86,24 @@ main {
   .pulse {
     @apply animate-pulse cursor-default;
   }
+
+  .category{
+    &:nth-child(2n+1) {
+      background-color: #27856A;
+    }
+    &:nth-child(3n-1) {
+      background-color: #E8115B;
+    }
+    &:nth-child(6n-3) {
+      background-color: #8D67AB;
+    }
+    &:nth-child(3n+1) {
+      background-color: #1E3264; 
+    }
+    &:nth-child(4n-2) {
+      background-color: #509BF5; 
+    }
+  }
 }
 
 aside {

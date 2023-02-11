@@ -18,9 +18,9 @@ const useService = () => {
       }
    }
 
-   const getPlaylists = async (timestamp = '2023-01-19T11%3A35%3A40') => {
+   const getPlaylists = async (timestamp) => {
       if (token) {
-         const res = await request(`${_apiBase}browse/featured-playlists?country=UZ&locale=uz&timestamp=${timestamp}&limit=5&offset=2`, { headers: { Authorization: `Bearer ${token}` } })
+         const res = await request(`${_apiBase}browse/featured-playlists?country=UZ&locale=uz&timestamp=${timestamp}&limit=5&offset=0`, { headers: { Authorization: `Bearer ${token}` } })
          return res.data
       }
    }
@@ -46,7 +46,27 @@ const useService = () => {
       }
    }
 
-   return { token, loading, error, getPlaylists, getNewReleases, getMyPlaylists, getTracks, getSearch }
+   const getCategories = async () => {
+      const res = await request(`${_apiBase}browse/categories?country=UZ&locale=uz&offset=0&limit=30`, { headers: { Authorization: `Bearer ${token}` } })
+
+      return res.data
+   }
+
+   // /browse/categories/0JQ5DAqbMKFRKBHIxJ5hMm/playlists?country=uz&limit=4&offset=0
+
+   const getCategory = async (id) => {
+      const res = await request(`${_apiBase}browse/categories/${id}/playlists?country=uz&limit=4&offset=0`, { headers: { Authorization: `Bearer ${token}` } })
+
+      return res.data
+   }
+
+   return {
+      token, loading, error,
+      getPlaylists, getNewReleases, getMyPlaylists,
+      getTracks,
+      getSearch,
+      getCategories, getCategory
+   }
 }
 
 export default useService
