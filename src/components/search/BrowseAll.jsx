@@ -5,13 +5,12 @@ function BrowseAll_child({ item }) {
    const { token, getCategory } = useService()
 
    useEffect(() => {
-      getCategory(item.id).then(res => console.log(res?.playlists?.items))
+      // getCategory(item.id).then(res => console.log(res?.playlists?.items))
    }, [token]);
 
    return (
       <div
-         style={{ background: item.bg }}
-         className='category bg-[#27856A] rounded-lg p-[50%] max-w-[242px] overflow-hidden cursor-pointer relative'
+         className='category'
       >
          <span className='text-[26px] font-bold capitalize absolute left-5 top-5'>{item.name}</span>
          <div className='w-[55%] h-[55%] bg-blue-500 absolute right-[-18px] bottom-[-12px] rotate-[25deg]'>

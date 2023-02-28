@@ -1,7 +1,16 @@
+import { useEffect, useState } from "react";
+import useService from "../../hooks/service.hook";
 import Song from "../children/Song";
 
 const SearchResult = ({ tracks, artist }) => {
+   const [topTracks, setTopTracks] = useState([]);
+   const { token, getTracks } = useService()
    const artistImg = artist?.images[0]?.url
+
+   // useEffect(() => {
+   //    getTracks(`https://api.spotify.com/v1/artists/${artist?.id}/top-tracks?market=uz`)
+   //       .then(res => console.log(res))
+   // }, [artist]);
 
    return (
       <div className="max-w-[1400px] flex gap-8">

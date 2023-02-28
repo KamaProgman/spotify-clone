@@ -1,13 +1,14 @@
 import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
+import searchContext from '../contexts/searchContext';
+import bgContext from '../contexts/bgContext';
 
 import Aside from "../components/Aside";
 import Header from "../components/Header";
 import Drawer from "../components/Drawer";
 import Login from '../components/Login';
+import Player from '../components/Player';
 
-import bgContext from '../contexts/bgContext';
-import searchContext from '../contexts/searchContext';
 
 const Layout = ({ children }) => {
    const [drawerIsShown, setDrawerIsShown] = useState(false);
@@ -61,6 +62,7 @@ const Layout = ({ children }) => {
 
                   {children}
                   {drawerIsShown ? <Drawer isShown={() => setDrawerIsShown(!drawerIsShown)} /> : null}
+                  <Player/>
                </main>
             </searchContext.Provider>
          </bgContext.Provider>

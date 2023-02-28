@@ -49,7 +49,7 @@ header {
 }
 
 main {
-  @apply flex pl-[335px] pt-6 pb-8;
+  @apply flex pl-[335px] pt-6 pb-36;
 
 	.bg-spotify {
 		@apply h-[440px] w-full absolute z-[-1] left-0 top-0 bg-gradient-to-b from-[#1f1f3399] to-[#121212];
@@ -88,6 +88,8 @@ main {
   }
 
   .category{
+    @apply bg-[#27856A] rounded-lg p-[50%] max-w-[242px] overflow-hidden cursor-pointer relative;
+    
     &:nth-child(2n+1) {
       background-color: #27856A;
     }
@@ -104,6 +106,57 @@ main {
       background-color: #509BF5; 
     }
   }
+
+  .player {
+    @apply w-full h-fit px-5 pt-5 pb-3 bg-[#181818]
+     flex justify-between items-center gap-10 
+     fixed left-0 bottom-0 text-white z-50;
+    border-top: 1px solid #282828;
+  }
+
+  audio {
+    height: 30px;
+    &::-webkit-media-controls-enclosure {
+      border-radius: 5px;
+      background-color: transparent;
+    }
+    &::-webkit-media-controls-play-button {
+      display: none;
+    }
+
+    &::-webkit-media-controls-current-time-display,
+    &::-webkit-media-controls-time-remaining-display {
+      color: #A6A6A6;
+      text-shadow: none;
+    }
+    &::-webkit-media-controls-timeline {
+      background-color: #181818;
+      border-radius: 30px;
+    }
+    &::-webkit-media-controls-mute-button {
+      display: none !important;
+    }
+    &::-webkit-media-controls-volume-slider {
+      display: none !important;
+    }
+    &::-webkit-media-controls-volume-control-container.closed {
+      display: none !important;
+    }
+    &::-webkit-media-controls-volume-control-container {
+      display: none !important;
+    }
+    &::-webkit-media-controls-panel {
+      background-color: #181818;
+    }
+    &::-webkit-media-controls-rewind-button {
+      background-color: #fff;
+      color: #fff;
+    }
+    &::-webkit-media-controls-timeline {
+      color: #fff;
+    }
+  }
+
 }
 
 aside {
