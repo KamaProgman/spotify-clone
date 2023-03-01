@@ -39,7 +39,7 @@ const useService = () => {
       }
    }
 
-   
+
 
    const getSearch = async (searchText, limit, type = 'track') => {
       if (token) {
@@ -49,12 +49,10 @@ const useService = () => {
    }
 
    const getCategories = async () => {
-      const res = await request(`${_apiBase}browse/categories?country=UZ&locale=uz&offset=0&limit=30`, { headers: { Authorization: `Bearer ${token}` } })
+      const res = await request(`${_apiBase}browse/categories?country=UZ&locale=uz&offset=20&limit=5`, { headers: { Authorization: `Bearer ${token}` } })
 
       return res.data
    }
-
-   // /browse/categories/0JQ5DAqbMKFRKBHIxJ5hMm/playlists?country=uz&limit=4&offset=0
 
    const getCategory = async (id) => {
       const res = await request(`${_apiBase}browse/categories/${id}/playlists?country=uz&limit=4&offset=0`, { headers: { Authorization: `Bearer ${token}` } })

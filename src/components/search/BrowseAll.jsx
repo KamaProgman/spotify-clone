@@ -2,11 +2,13 @@ import { useEffect, useState } from "react";
 import useService from "../../hooks/service.hook";
 
 function BrowseAll_child({ item }) {
+   const [category, setCategory] = useState([]);
    const { token, getCategory } = useService()
 
    useEffect(() => {
-      // getCategory(item.id).then(res => console.log(res?.playlists?.items))
+      getCategory(item.id).then(res => setCategory(res?.playlists?.items))
    }, [token]);
+   console.log(category);
 
    return (
       <div
