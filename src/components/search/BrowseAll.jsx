@@ -8,7 +8,6 @@ function BrowseAll_child({ item }) {
    useEffect(() => {
       getCategory(item.id).then(res => setCategory(res?.playlists?.items))
    }, [token]);
-   console.log(category);
 
    return (
       <div
