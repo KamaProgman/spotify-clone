@@ -1,10 +1,25 @@
+import { useContext } from 'react';
+import currentTrack from '../../contexts/currentTrack';
+
 import { AiOutlineHeart, AiFillHeart } from 'react-icons/ai';
 
 const Song = ({ track, index }) => {
+   const { changeTrack } = useContext(currentTrack)
    const duration = ((track.duration_ms / 1000) / 60).toFixed(2).split('.')
 
+   const clickSong = () => {
+      localStorage.setItem("lastTrack", JSON.stringify(track));
+      let data = {
+         isPlaying: true,
+         track: track,
+      };
+      changeTrack(data);
+   }
+
    return (
-      <tr className="px-3 py-2 flex gap-5 items-center text-white hover:bg-[#55555550] ease-in-out duration-200 rounded-md">
+      <tr
+         className="px-3 py-2 flex gap-5 items-center text-white hover:bg-[#55555550] ease-in-out duration-200 rounded-md"
+         onClick={clickSong}>
          <td className="max-h-[52px] flex-1 flex items-center">
             <span className='text-xl text-[#B3B3B3] font-medium w-7'>{index}</span>
             <img src={track.album?.images[0].url} alt="song" className='max-h-[52px] h-[100%] ml-1 mr-5' />

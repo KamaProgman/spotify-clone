@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import searchContext from '../contexts/searchContext';
 import bgContext from '../contexts/bgContext';
+import currentTrack from '../contexts/currentTrack';
 
 import Aside from "../components/Aside";
 import Header from "../components/Header";
@@ -9,12 +10,15 @@ import Drawer from "../components/Drawer";
 import Login from '../components/Login';
 import Player from '../components/Player';
 
-
 const Layout = ({ children }) => {
    const [drawerIsShown, setDrawerIsShown] = useState(false);
-   const [token, setToken] = useState('')
    const [bgColor, setBgColor] = useState();
    const [searchText, setSearchText] = useState('');
+   const [track, setTrack] = useState({
+      isPlaying: false,
+      track: "",
+   });
+   const [token, setToken] = useState('')
    const location = useLocation()
 
    // Setting token to localStorage
@@ -43,6 +47,10 @@ const Layout = ({ children }) => {
       setSearchText(text)
    }
 
+   const changeTrack = (data) => {
+      setTrack(data);
+   }
+
    if (!token) {
       return (
          <Login />
@@ -52,19 +60,21 @@ const Layout = ({ children }) => {
    return (
       <>
          <bgContext.Provider value={{ bgColor, setContextBg }}>
-            <searchContext.Provider value={{ searchText, changeSearchText }}>
-               <Header isShown={drawerIsShown} />
-               <main>
-                  <Aside />
-                  {location.pathname === '/' ? (
-                     <div className="bg-spotify" style={{ backgroundColor: bgColor }}></div>
-                  ) : null}
+            <currentTrack.Provider value={{ track, changeTrack }}>
+               <searchContext.Provider value={{ searchText, changeSearchText }}>
+                  <Header isShown={drawerIsShown} />
+                  <main>
+                     <Aside />
+                     {location.pathname === '/' ? (
+                        <div className="bg-spotify" style={{ backgroundColor: bgColor }}></div>
+                     ) : null}
 
-                  {children}
-                  {drawerIsShown ? <Drawer isShown={() => setDrawerIsShown(!drawerIsShown)} /> : null}
-                  <Player/>
-               </main>
-            </searchContext.Provider>
+                     {children}
+                     {drawerIsShown ? <Drawer isShown={() => setDrawerIsShown(!drawerIsShown)} /> : null}
+                     <Player />
+                  </main>
+               </searchContext.Provider>
+            </currentTrack.Provider>
          </bgContext.Provider>
       </>
    );

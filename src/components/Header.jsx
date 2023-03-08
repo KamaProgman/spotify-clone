@@ -18,8 +18,6 @@ const Header = ({ isShown }) => {
       getUser().then(res => setUser(res))
    }, [token]);
 
-   console.log(user);
-
    useEffect(() => {
       changeSearchText('')
    }, [location]);
