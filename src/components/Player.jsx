@@ -14,7 +14,7 @@ const Player = () => {
 
    useEffect(() => {
       const audio = document.querySelector('audio')
-      
+
       if (play) {
          audio.play()
          changeTrack({ isPlaying: true, ...track })

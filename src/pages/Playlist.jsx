@@ -7,7 +7,7 @@ import Loader from '../components/children/Loader'
 import PlaylistOverview from "../components/PlaylistOverview";
 import SongsList from "../components/SongsList";
 
-const Playlist = () => {
+const PlaylistPage = () => {
    const [tracks, setTracks] = useState([]);
    const [album, setAlbum] = useState(null);
    const { state } = useLocation()
@@ -48,11 +48,17 @@ const Playlist = () => {
             <title>Spotify - Playlist</title>
          </Helmet>
          <section className="flex-1">
-            <PlaylistOverview album={album} name={state.name} img={state.img} artists={getArtistsNames} />
+            <PlaylistOverview
+               album={album}
+               name={state.name}
+               img={state.img}
+               artists={getArtistsNames}
+               type={state.playlist.type} 
+               />
             <SongsList tracks={tracks} />
          </section>
       </>
    );
 }
 
-export default Playlist;
+export default PlaylistPage;

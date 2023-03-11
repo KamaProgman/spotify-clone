@@ -2,23 +2,18 @@ import { useEffect, useState } from "react";
 import useService from "../../hooks/service.hook";
 import Song from "../children/Song";
 
-const SearchResult = ({ tracks, artist }) => {
-   const [topTracks, setTopTracks] = useState([]);
-   const { token, getTracks } = useService()
+const SearchResult = ({ tracks, artist, goToPlaylist }) => {
    const artistImg = artist?.images[0]?.url
-
-   // useEffect(() => {
-   //    getTracks(`https://api.spotify.com/v1/artists/${artist?.id}/top-tracks?market=uz`)
-   //       .then(res => console.log(res))
-   // }, [artist]);
 
    return (
       <div className="max-w-[1400px] flex gap-8">
          <div className="flex-1 max-w-[38%]">
             <h1 className="text-[26px] font-bold mb-5">Top Results</h1>
+
             <div
                className="bg-[#aaaaaa10] p-5 rounded-lg
-               ease-linear duration-150 hover:bg-[#aaaaaa25]">
+               ease-linear duration-150 hover:bg-[#aaaaaa25]"
+               onClick={() => goToPlaylist(artist)}>
                <div className="w-24 h-24 mb-6 rounded-full overflow-hidden shadow-2xl">
                   <img src={artistImg} alt="artist" className="w-full" />
                </div>
@@ -27,7 +22,9 @@ const SearchResult = ({ tracks, artist }) => {
                   <span className="py-[6px] px-[10px] bg-[#00000030] text-lg font-bold uppercase rounded-3xl">{artist?.type}</span>
                </div>
             </div>
+
          </div>
+
          <div className="flex-1">
             <h2 className="text-[26px] font-bold">Songs</h2>
             <table className="w-full">

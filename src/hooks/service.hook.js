@@ -59,7 +59,7 @@ const useService = () => {
    }
 
    const getUser = async () => {
-      if(token) {
+      if (token) {
          const res = await request(`${_apiBase}me`, { headers: { Authorization: `Bearer ${token}` } })
          return res.data
       }
