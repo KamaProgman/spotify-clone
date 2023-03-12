@@ -4,11 +4,11 @@ const PlaylistCard = ({ item }) => {
    const { name, images, description } = item
    const img = item?.images[0]?.url
    const navigate = useNavigate()
-
+   
    const goToPlaylist = (item) => {
-      navigate(`playlist/${item.id}`, {state: {track: item?.tracks?.href, playlist: item, name: item.name, img}})
+      navigate(`../playlist/${item.id}`, {state: {track: item?.tracks?.href, playlist: item, name: item.name, img}})
    }
-
+   
    return (
       <div className="bg-[#ffffff10] p-5 ease-in duration-200 hover:bg-[#d4d4d420] cursor-pointer rounded-lg" onClick={() => goToPlaylist(item)}>
          <img src={images[0].url} alt="" className="w-full custom-shadow rounded-md" />

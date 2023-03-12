@@ -11,23 +11,9 @@ const useService = () => {
       setToken(window.localStorage.getItem('token'))
    }, []);
 
-   const getMyPlaylists = async () => {
+   const getPlaylists = async (path, limit) => {
       if (token) {
-         const res = await request(`${_apiBase}me/playlists?limit=6&offset=0`, { headers: { Authorization: `Bearer ${token}` } })
-         return res.data
-      }
-   }
-
-   const getPlaylists = async (timestamp) => {
-      if (token) {
-         const res = await request(`${_apiBase}browse/featured-playlists?country=UZ&locale=uz&timestamp=${timestamp}&limit=5&offset=0`, { headers: { Authorization: `Bearer ${token}` } })
-         return res.data
-      }
-   }
-
-   const getNewReleases = async () => {
-      if (token) {
-         const res = await request(`${_apiBase}browse/new-releases?country=UZ&limit=10&offset=1`, { headers: { Authorization: `Bearer ${token}` } })
+         const res = await request(`${_apiBase}${path}limit=${limit}&offset=0`, { headers: { Authorization: `Bearer ${token}` } })
          return res.data
       }
    }
@@ -48,13 +34,11 @@ const useService = () => {
 
    const getCategories = async () => {
       const res = await request(`${_apiBase}browse/categories?country=UZ&locale=uz&offset=20&limit=5`, { headers: { Authorization: `Bearer ${token}` } })
-
       return res.data
    }
 
    const getCategory = async (id) => {
       const res = await request(`${_apiBase}browse/categories/${id}/playlists?country=uz&limit=4&offset=0`, { headers: { Authorization: `Bearer ${token}` } })
-
       return res.data
    }
 
@@ -65,13 +49,21 @@ const useService = () => {
       }
    }
 
+   const getArtistDatas = async (id) => {
+      if (token) {
+         const res = await request(`${_apiBase}artists/${id}/related-artists`, { headers: { Authorization: `Bearer ${token}` } })
+         return res.data
+      }
+   }
+
    return {
       token, loading, error,
-      getPlaylists, getNewReleases, getMyPlaylists,
+      getPlaylists,
       getTracks,
       getSearch,
       getCategories, getCategory,
-      getUser
+      getUser,
+      getArtistDatas
    }
 }
 

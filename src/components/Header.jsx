@@ -51,6 +51,7 @@ const Header = ({ isShown }) => {
                         placeholder="What do you want listen to?"
                         id='search'
                         type="text"
+                        autoComplete="off"
                         onInput={(e) => changeSearchText(e.target.value)}
                      />
                   </div>

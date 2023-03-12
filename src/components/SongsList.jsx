@@ -5,7 +5,7 @@ import { IoPlaySharp } from "react-icons/io5"
 import { FiHeart, FiSearch } from "react-icons/fi"
 import { HiArrowRight } from "react-icons/hi"
 
-const SongsList = ({ tracks }) => {
+const SongsList = ({ tracks, img }) => {
    return (
       <div>
          <div className="mt-8">
@@ -53,7 +53,10 @@ const SongsList = ({ tracks }) => {
             <tbody>
                {
                   tracks?.map((item, idx) => {
-                     return <Song key={idx} index={idx + 1} track={item.track ? item.track : item} />
+                     return <Song key={idx}
+                        track={item.track ? item.track : item}
+                        index={idx + 1}
+                        img={img} />
                   })
                }
             </tbody>

@@ -1,12 +1,13 @@
 import { useState, useEffect, useContext } from 'react';
-import searchContext from '../contexts/searchContext';
+import { useNavigate } from 'react-router-dom';
+import { Helmet } from 'react-helmet';
 import useService from '../hooks/service.hook';
+import searchContext from '../contexts/searchContext';
 
 import SearchResult from '../components/search/SearchResult';
 import RecentSearches from '../components/search/RecentSearches';
 import BrowseAll from '../components/search/BrowseAll';
 import Loader from '../components/children/Loader'
-import { useNavigate } from 'react-router-dom';
 
 const Search = () => {
    const [tracks, setTracks] = useState([]);
@@ -21,10 +22,9 @@ const Search = () => {
          getSearch(searchText, 4).then(res => setTracks(res?.tracks?.items))
       }
    }, [searchText]);
-   
+
    const goToPlaylist = (item) => {
       let img = item?.images[0]?.url
-      console.log(item);
       navigate(`../artist/${item.id}`, { state: { track: item?.tracks?.href, playlist: item, name: item.name, img } })
    }
 
@@ -36,17 +36,22 @@ const Search = () => {
    }
 
    return (
-      <section>
-         {
-            searchText ? (
-               <SearchResult
-                  tracks={tracks}
-                  artist={artist[0]}
-                  goToPlaylist={goToPlaylist} />
-            ) : <RecentSearches />
-         }
-         <BrowseAll />
-      </section>
+      <>
+      <Helmet>
+         <title>Spotify ― Search</title>
+      </Helmet>
+         <section>
+            {
+               searchText ? (
+                  <SearchResult
+                     tracks={tracks}
+                     artist={artist[0]}
+                     goToPlaylist={goToPlaylist} />
+               ) : <RecentSearches />
+            }
+            <BrowseAll />
+         </section>
+      </>
    );
 }
 

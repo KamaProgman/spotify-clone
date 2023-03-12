@@ -4,7 +4,7 @@ const Library = () => {
    return (
       <>
          <Helmet>
-            <title>Spotify - Library</title>
+            <title>Spotify ― Library</title>
          </Helmet>
          <div>
             Library

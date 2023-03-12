@@ -13,7 +13,7 @@ const Home = () => {
    const [releases, setReleases] = useState([]);
    const [greeting, setGreeting] = useState('Hello');
    const [errorMsg, setErrorMsg] = useState('');
-   const { token, loading, error, getPlaylists, getMyPlaylists, getNewReleases } = useService()
+   const { token, loading, error, getPlaylists} = useService()
 
    // Getting playlists from server
    useEffect(() => {
@@ -27,12 +27,15 @@ const Home = () => {
       }
       timestamp = dateIsValid(timestamp) ? new Date(timestamp).toISOString() : setErrorMsg('Not a valid date. Please try again')
 
-      // Getting all kind of playlists
-      getMyPlaylists().then(res => setMyPlaylists(res?.items))
-      getPlaylists(timestamp).then(res => {
-         setPlaylists(res?.playlists?.items);
-      })
-      getNewReleases().then(res => setReleases(res?.albums?.items))
+      // Getting playlists
+      getPlaylists('me/playlists?', 6)
+         .then(res => setMyPlaylists(res?.items))
+
+      getPlaylists(`browse/featured-playlists?country=UZ&locale=uz&timestamp=${timestamp}&`, 5)
+         .then(res => setPlaylists(res?.playlists?.items))
+
+      getPlaylists('browse/new-releases?country=UZ&', 10)
+         .then(res => setReleases(res?.albums?.items))
    }, [token]);
 
    // Setting greeting
@@ -60,7 +63,7 @@ const Home = () => {
    return (
       <>
          <Helmet>
-            <title>Spotify - Home</title>
+            <title>Spotify ― Web Player</title>
          </Helmet>
          <section>
             <div>

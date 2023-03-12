@@ -45,7 +45,7 @@ const PlaylistPage = () => {
    return (
       <>
          <Helmet>
-            <title>Spotify - Playlist</title>
+            <title>Spotify ― {state.name}</title>
          </Helmet>
          <section className="flex-1">
             <PlaylistOverview
@@ -53,9 +53,9 @@ const PlaylistPage = () => {
                name={state.name}
                img={state.img}
                artists={getArtistsNames}
-               type={state.playlist.type} 
-               />
-            <SongsList tracks={tracks} />
+               type={state.playlist.type}
+            />
+            <SongsList tracks={tracks} img={state.img} />
          </section>
       </>
    );

@@ -27,9 +27,9 @@ const PlaylistOverview = (props) => {
             }
             <div className='flex gap-2 text-lg'>
                {
-                  type == 'playlist'
+                  type == 'playlist' || type == 'album'
                      ? <span className='text-[#a4a4a4]'>{`${album?.items.length} songs, 2hr 01 min`}</span>
-                     : <span className='text-xl text-[#a4a4a4]'>{`followers ${album.followers.total}`}</span>
+                     : <span className='text-xl text-[#a4a4a4]'>{`${album.followers.total} followers`}</span>
                }
             </div>
          </div>

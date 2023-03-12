@@ -12,10 +12,11 @@ import { FaHeart } from 'react-icons/fa'
 const Aside = () => {
    const [myPlaylists, setMyPlaylists] = useState([]);
    const navigate = useNavigate()
-   const { token, loading, error, getMyPlaylists } = useService()
+   const { token, loading, error, getPlaylists } = useService()
 
    useEffect(() => {
-      getMyPlaylists().then(res => setMyPlaylists(res?.items))
+      getPlaylists('me/playlists?', 50)
+         .then(res => setMyPlaylists(res?.items))
    }, [token]);
 
    const goToPlaylist = (item) => {
