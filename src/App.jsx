@@ -8,6 +8,7 @@ import Search from './pages/Search';
 import Library from './pages/Library'
 import CreatePlaylist from './pages/CreatePlaylist'
 import LikedSongs from './pages/LikedSongs'
+import CurrentPlaylists from './pages/CurrentPlaylists';
 
 const App = () => {
 	return (
@@ -20,6 +21,7 @@ const App = () => {
 				<Route path='library' element={<Library />} />
 				<Route path='create-playlist' element={<CreatePlaylist />} />
 				<Route path='liked-songs' element={<LikedSongs />} />
+				<Route path='playlists' element={<CurrentPlaylists />} />
 			</Routes>
 		</Layout>
 	);

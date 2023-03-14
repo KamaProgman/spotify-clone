@@ -52,11 +52,9 @@ const Layout = ({ children }) => {
    }
 
    if (!token) {
-      setTimeout(() => {
-         return (
-            <Login />
-         )
-      }, 300);
+      return (
+         <Login />
+      )
    }
 
    return (

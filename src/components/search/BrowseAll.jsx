@@ -1,21 +1,28 @@
 import { useEffect, useState } from "react";
 import useService from "../../hooks/service.hook";
+import { useNavigate } from "react-router-dom";
 
 function BrowseAll_child({ item }) {
    const [category, setCategory] = useState([]);
    const { token, getCategory } = useService()
+   const navigate = useNavigate()
 
    useEffect(() => {
       getCategory(item.id).then(res => setCategory(res?.playlists?.items))
    }, [token]);
 
+   const goToCurrentPlaylists = (data, category) => {
+      navigate(`../playlists`, { state: { playlists: data, name: category.name } })
+   }
+
    return (
       <div
          className='category'
+         onClick={() => goToCurrentPlaylists(category, item)}
       >
          <span className='text-[26px] font-bold capitalize absolute left-5 top-5'>{item.name}</span>
          <div className='w-[55%] h-[55%] bg-blue-500 absolute right-[-18px] bottom-[-12px] rotate-[25deg]'>
-            <img src={item?.icons[0]?.url} alt="" />
+            <img src={item?.icons[0]?.url} alt="category" />
          </div>
       </div>
    )
@@ -23,10 +30,10 @@ function BrowseAll_child({ item }) {
 
 const BrowseAll = () => {
    const [categories, setCategories] = useState([]);
-   const { getCategories, token } = useService()
+   const { getAllCategories, token } = useService()
 
    useEffect(() => {
-      getCategories().then(res => setCategories(res?.categories?.items))
+      getAllCategories().then(res => setCategories(res?.categories?.items))
    }, [token]);
 
    return (

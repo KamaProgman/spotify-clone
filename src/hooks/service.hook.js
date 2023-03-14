@@ -32,13 +32,13 @@ const useService = () => {
       }
    }
 
-   const getCategories = async () => {
+   const getAllCategories = async () => {
       const res = await request(`${_apiBase}browse/categories?country=UZ&locale=uz&offset=20&limit=5`, { headers: { Authorization: `Bearer ${token}` } })
       return res.data
    }
 
    const getCategory = async (id) => {
-      const res = await request(`${_apiBase}browse/categories/${id}/playlists?country=uz&limit=4&offset=0`, { headers: { Authorization: `Bearer ${token}` } })
+      const res = await request(`${_apiBase}browse/categories/${id}/playlists?country=uz&limit=10&offset=0`, { headers: { Authorization: `Bearer ${token}` } })
       return res.data
    }
 
@@ -61,7 +61,7 @@ const useService = () => {
       getPlaylists,
       getTracks,
       getSearch,
-      getCategories, getCategory,
+      getAllCategories, getCategory,
       getUser,
       getArtistDatas
    }
